@@ -1,0 +1,12 @@
+.venv/
+venv/
+env/
+ENV/
+*.csv
+data/
+.env
+*.env
+__pycache__/
+.pytest_cache/
+backend/etl/logs/
+

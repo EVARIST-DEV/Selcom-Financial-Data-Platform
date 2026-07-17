@@ -1,0 +1,110 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: selcom-postgres
+
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_NAME:-selcom_db}
+
+    ports:
+      - "${DB_PORT:-5432}:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres} -d ${DB_NAME:-selcom_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+    restart: unless-stopped
+
+    networks:
+      - selcom-network
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+
+    container_name: selcom-backend
+
+    # Force Docker to resolve host.docker.internal directly to your Windows host machine
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME:-selcom_db}
+      DB_USER: ${DB_USER:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD:-postgres}
+
+      ENVIRONMENT: ${ENVIRONMENT:-development}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+
+      # Correct base endpoint fallback matching the .env base URL configuration
+      LOCAL_LLM_URL: ${LOCAL_LLM_URL:-http://host.docker.internal:11434}
+      LLAMA_MODEL: ${LLAMA_MODEL:-llama2:latest}
+
+      PYTHONUNBUFFERED: 1
+
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+    volumes:
+      - ./backend:/app/backend
+      - ./data:/app/data
+      - ./logs:/app/logs
+
+    restart: unless-stopped
+
+    networks:
+      - selcom-network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+
+    container_name: selcom-frontend
+
+    environment:
+      BACKEND_URL: http://backend:8000
+      ENVIRONMENT: ${ENVIRONMENT:-development}
+
+    # FIX: Disables Streamlit telemetry and bypasses the interactive email prompt
+    command: streamlit run frontend/streamlit/app.py --server.port 8501 --server.address 0.0.0.0 --browser.gatherUsageStats false --server.headless true
+
+    ports:
+      - "${FRONTEND_PORT:-8501}:8501"
+
+    depends_on:
+      backend:
+        condition: service_started
+
+    volumes:
+      - ./frontend:/app/frontend
+      - ./data:/app/data
+      - ./logs:/app/logs
+
+    restart: unless-stopped
+
+    networks:
+      - selcom-network
+
+networks:
+  selcom-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
