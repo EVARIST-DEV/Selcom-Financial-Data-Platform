@@ -1,12 +1,12 @@
-# 🎨 SelFlow UI Guide - Complete Interaction Guide
+# SelFlow UI Guide - Complete Interaction Guide
 
-## 🎯 Dashboard Overview
+##  Dashboard Overview
 
-Your Streamlit dashboard now has **4 main tabs** with full LLM interaction and data visualization support.
+The Streamlit dashboard  has **4 main tabs** with full LLM interaction and data visualization support.
 
 ---
 
-## 📍 TAB 1: 🤖 AI Query Hub (Main Interaction)
+##  TAB 1:  AI Query Hub (Main Interaction)
 
 ### **What You Can Do Here:**
 
@@ -19,7 +19,7 @@ Your Streamlit dashboard now has **4 main tabs** with full LLM interaction and d
      - "Show me high-value transactions"
 
 2. **See Generated SQL**
-   - Click "📝 Generated SQL" to expand
+   - Click " Generated SQL" to expand
    - See exactly what SQL Llama generated
    - Useful for learning and debugging
 
@@ -52,13 +52,13 @@ Results Display Here
 ```
 
 ### **Status Indicators:**
-- 🟢 Database: healthy → Connected & ready
-- 🟢 API: Online → Backend responding
-- 🟢 Llama: Ready → Local model available
+-  Database: healthy → Connected & ready
+-  API: Online → Backend responding
+-  Llama: Ready → Local model available
 
 ---
 
-## 📈 TAB 2: Analytics Dashboard
+##  TAB 2: Analytics Dashboard
 
 ### **Real-Time Metrics:**
 - Total Transactions count
@@ -75,7 +75,7 @@ Results Display Here
 
 ---
 
-## 📊 TAB 3: Data Explorer
+##  TAB 3: Data Explorer
 
 ### **Database Schema**
 Shows the structure of your `staging_transactions` table:
@@ -95,7 +95,7 @@ Shows all available endpoints with URLs
 
 ---
 
-## 📚 TAB 4: Help & Documentation
+##  TAB 4: Help & Documentation
 
 ### **Getting Started Guide**
 Step-by-step setup instructions
@@ -114,7 +114,7 @@ Technical details about components
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### **Step 1: Refresh Dashboard**
 If you haven't already, open:
@@ -124,18 +124,18 @@ http://localhost:8501
 
 ### **Step 2: Check System Status**
 Look at the **left sidebar** - All indicators should be green:
-- 🟢 Database: healthy
-- 🟢 API: Online
-- 🟢 Llama: Ready
+-  Database: healthy
+-  API: Online
+-  Llama: Ready
 
-### **Step 3: Click "🤖 AI Query Hub" Tab**
+### **Step 3: Click " AI Query Hub" Tab**
 
 ### **Step 4: Enter a Question**
 ```
 "Show all transactions from today"
 ```
 
-### **Step 5: Click "🔍 Query Data" Button**
+### **Step 5: Click " Query Data" Button**
 
 ### **Step 6: Wait for Results**
 - Shows "Llama is generating SQL..." while thinking
@@ -148,7 +148,7 @@ Look at the **left sidebar** - All indicators should be green:
 
 ---
 
-## 💡 Example Queries
+##  Example Queries
 
 ### **Transaction Analysis**
 ```
@@ -265,7 +265,7 @@ Refresh the page: Press F5 or Ctrl+R
 
 ---
 
-## 📊 Data Visualization Tips
+##  Data Visualization Tips
 
 ### **Create Custom Visualizations**
 
@@ -290,29 +290,29 @@ CASH_OUT      | 630
 
 ---
 
-## 🔒 Security Reminder
+##  Security Reminder
 
-✅ **All data stays local**
+**All data stays local**
 - No data sent to external APIs
 - Llama runs on your Windows host
 - PostgreSQL runs in Docker
 
-✅ **Query Processing**
+**Query Processing**
 - Llama generates SQL locally
 - Database executes locally
 - Results returned locally
 
-✅ **No Cloud Dependencies**
+ **No Cloud Dependencies**
 - Works offline after initial model download
 - No API keys needed
 - No rate limits
 
 ---
 
-## 📞 Getting Help
+##  Getting Help
 
 ### **In-App Help**
-1. Go to **📚 Help & Documentation** tab
+1. Go to ** Help & Documentation** tab
 2. Find your issue in Troubleshooting section
 3. Follow the solution
 
@@ -341,22 +341,22 @@ Interactive Swagger UI showing all endpoints
 
 ### **CSV Format**
 - Best for: Excel, Google Sheets
-- Command: Click "📥 Download CSV"
+- Command: Click " Download CSV"
 - File: `query_results.csv`
 
 ### **JSON Format**
 - Best for: APIs, Python, scripting
-- Command: Click "📥 Download JSON"
+- Command: Click " Download JSON"
 - File: `query_results.json`
 
 ### **Excel Format**
 - Best for: Native Excel sheets
-- Command: Click "📥 Download Excel"
+- Command: Click " Download Excel"
 - File: `query_results.xlsx`
 
 ---
 
-## 🎯 Workflow Example
+##  Workflow Example
 
 ### **Scenario: "I want to analyze customer transactions"**
 
@@ -371,23 +371,23 @@ Interactive Swagger UI showing all endpoints
 
 ---
 
-## ✨ Tips & Tricks
+##  Tips & Tricks
 
 ### **Tip 1: Use Specific Column Names**
-❌ Bad: "Show me data"
-✅ Good: "Show me transaction_id, amount, status"
+ Bad: "Show me data"
+ Good: "Show me transaction_id, amount, status"
 
 ### **Tip 2: Be Clear About Filters**
-❌ Bad: "High transactions"
-✅ Good: "Show me transactions with amount > 1000"
+ Bad: "High transactions"
+ Good: "Show me transactions with amount > 1000"
 
 ### **Tip 3: Ask for Aggregations**
-❌ Bad: "Count stuff"
-✅ Good: "Count transactions grouped by status"
+ Bad: "Count stuff"
+ Good: "Count transactions grouped by status"
 
 ### **Tip 4: Use Time Frames**
-❌ Bad: "Recent transactions"
-✅ Good: "Show me transactions from the last 7 days"
+ Bad: "Recent transactions"
+ Good: "Show me transactions from the last 7 days"
 
 ### **Tip 5: Download Large Results**
 - For 1000+ rows, download to CSV
@@ -395,18 +395,18 @@ Interactive Swagger UI showing all endpoints
 
 ---
 
-## 🚀 Next Steps
+##  Next Steps
 
-1. ✅ **Setup Ollama** on Windows host
-2. ✅ **Try first query** in AI Query Hub
-3. ✅ **Download results** as CSV
-4. ✅ **Create visualizations** in Excel
-5. ✅ **Explore different queries** to learn patterns
+1.  **Setup Ollama** on Windows host
+2.  **Try first query** in AI Query Hub
+3.  **Download results** as CSV
+4.  **Create visualizations** in Excel
+5.  **Explore different queries** to learn patterns
 
 ---
 
 **Version:** 1.1.0 (Full UI & LLM Integration)
 **Last Updated:** 2025-01-14
-**Status:** ✅ Ready for Production Use
+**Status:**  Ready for Production Use
 
-**Happy querying! 🎉**
+**Happy querying! **
